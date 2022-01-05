@@ -17,6 +17,17 @@ De este modo un ejemplo de llamada al Endpoint desde el navegador, una vez el pr
 
   - http://localhost:8080/prices/priceByDateProductAndBrand?applicationDate=2020-06-14-10.00.00&productId=35455&brandId=1
 
+Y un ejemplo de respuesta sería:
+
+    {
+       "productId":35455,
+       "brandId":1,
+       "priceList":1,
+       "startDate":"2020-06-14 00:00:00",
+       "endDate":"2020-12-31 23:59:59",
+       "finalPrice":"35.5 EUR"
+    }  
+
 El proyecto incluye tests unitarios que han sido probados mediante JUnit con resultados esperados.
 
 Los requisitos iniciales de este proyecto están en el fichero TestJava2020.txt
