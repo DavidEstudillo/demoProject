@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.models.Prices;
+import com.example.demo.responses.PricesResponse;
 import com.example.demo.services.PricesService;
 
 @RestController
@@ -33,8 +34,10 @@ public class PricesController {
 		
 		if (result.orElse(null) == null) {		
 			return new ResponseEntity<>("NOT FOUND", HttpStatus.NOT_FOUND);
-		} else {	
-			return new ResponseEntity<>(result.get(), HttpStatus.OK);			
+		} else {
+			Prices price = result.get();
+			PricesResponse response = new PricesResponse(price.getProductId(), price.getBrandId(), price.getPriceList(), price.getStartDate(), price.getEndDate(), price.getPrice(), price.getCurr());
+			return new ResponseEntity<>(response, HttpStatus.OK);			
 		}
 		
 	}
