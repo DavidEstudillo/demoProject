@@ -1,11 +1,13 @@
 package com.example.demo.models;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 public class Prices {
@@ -16,16 +18,25 @@ public class Prices {
 	private Long id;
 	
 	private int brandId;
-	private Date startDate;
-	private Date endDate;
-	private int priceList;
-	private int productId;
-	private int priority;
-	private Double price;
+	
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+	private LocalDateTime startDate;
+	
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+	private LocalDateTime endDate;
+	
+	private int priceList;	
+	private int productId;	
+	private int priority;		
+	private Double price;	
 	private String curr;
 	
-	//Constructor	
-	public Prices(int brandId, Date startDate, Date endDate, int priceList, int productId, int priority, Double price, String curr) {
+	//Constructors
+	public Prices() {
+		
+	}
+	
+	public Prices(int brandId, LocalDateTime startDate, LocalDateTime endDate, int priceList, int productId, int priority, Double price, String curr) {
 		this.brandId = brandId;
 		this.startDate = startDate;
 		this.endDate = endDate;
@@ -53,18 +64,18 @@ public class Prices {
 	}
 	
 	//Field 'startDate' getter and setter
-	public Date getStartDate() {
+	public LocalDateTime getStartDate() {
 		return startDate;
 	}
-	public void setStartDate(Date startDate) {
+	public void setStartDate(LocalDateTime startDate) {
 		this.startDate = startDate;
 	}
 	
 	//Field 'endDate' getter and setter
-	public Date getEndDate() {
+	public LocalDateTime getEndDate() {
 		return endDate;
 	}
-	public void setEndDate(Date endDate) {
+	public void setEndDate(LocalDateTime endDate) {
 		this.endDate = endDate;
 	}
 
